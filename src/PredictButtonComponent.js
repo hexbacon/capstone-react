@@ -1,5 +1,7 @@
 import * as tf from '@tensorflow/tfjs';
 import { loadGraphModel } from '@tensorflow/tfjs';
+
+// Labels
 const Result = {
     0: "Aerosol",
     1: "Battery",
@@ -21,17 +23,27 @@ const url = {
 
 let model;
 
+// Helper funciton to load mode
 const loadModel = async () => {
-    model = await loadGraphModel(url.model);
+    try {
+        model = await loadGraphModel(url.model);
+    } catch (error) {
+        console.log(error);
+        return;
+    }
     if(model && model.predict) {
-        console.log("Model has Predict Method");
+        console.log('Model is loaded and has predict method!');
     }
 }
-const InputButton = () => {
+// PredictButton Handler
+const PredictButtonHandler = () => {
     loadModel();
     async function predictButtonHandler() {
         // Check if model is loaded
-        if(!model) {console.log("Model not loaded");}
+        if(!model) {
+            console.log("Model not loaded");
+            return;
+        }
         const resultList = document.getElementById("list");
         // Start processing image
         const image = document.getElementById("selected-image");
@@ -40,6 +52,7 @@ const InputButton = () => {
             .expandDims()
             .toFloat()
             .reverse(-1);
+        // Start Predicting
         try {
             const predictResult = await model.executeAsync(preImage);
             const predictOutput = await predictResult.data();
@@ -72,4 +85,4 @@ const InputButton = () => {
     );
 }
 
-export default InputButton;
+export default PredictButtonHandler;

@@ -1,11 +1,12 @@
 import ImageSelect from "./ImageSelect Component";
-import InputButton from "./InputButtonComponent";
+import PredictButtonHandler from "./PredictButtonComponent";
 
 const ImageButtonContainer = () => {
-    return <div className="input-container form">
-    <ImageSelect />
-    <InputButton />
-    </div>
+    return (
+    <div className="input-container form">
+        <ImageSelect />
+        <PredictButtonHandler />
+    </div>);
 }
 
 export default ImageButtonContainer;
