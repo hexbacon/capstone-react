@@ -1,6 +1,5 @@
 import * as tf from '@tensorflow/tfjs';
 import { loadGraphModel } from '@tensorflow/tfjs';
-import React, {useState, useEffect} from 'react';
 const Result = {
     0: "Aerosol",
     1: "Battery",
