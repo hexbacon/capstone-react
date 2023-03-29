@@ -1,0 +1,11 @@
+aerosol
+battery
+Can
+Clothes/Shoes
+glass bottle
+Ink Cartridge
+magazine
+Metal
+Organic
+Paper/cardboard
+Plastic
